@@ -8,13 +8,11 @@ import * as monaco from 'monaco-editor/esm/vs/editor/editor.api';
 import prettier from 'prettier';
 import parser from 'prettier/parser-babel';
 import Highlighter from 'monaco-jsx-highlighter';
-/* import traverse from '@babel/traverse';
-import { parse } from '@babel/parser'; */
 import codeShift from 'jscodeshift';
 
 interface CodeEditorProps {
   initialValue: string;
-  onChange(value: string): void;
+  onChange: (value: string) => void;
 }
 
 export const CodeEditor: React.FC<CodeEditorProps> = ({
@@ -39,7 +37,7 @@ export const CodeEditor: React.FC<CodeEditorProps> = ({
       () => {},
       () => {},
       undefined,
-      () => {},
+      () => {}
     );
   };
 
@@ -88,7 +86,7 @@ export const CodeEditor: React.FC<CodeEditorProps> = ({
         }}
         theme='vs-dark'
         language='javascript'
-        height='500px'
+        height='100%'
         value={initialValue}
       />
     </div>
