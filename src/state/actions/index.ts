@@ -10,7 +10,7 @@ export interface DeleteCellPayload {
   id: string;
 }
 
-export interface InsertCellBeforePayload {
+export interface InsertCellAfterPayload {
   id: string | null;
   type: CellTypes;
 }

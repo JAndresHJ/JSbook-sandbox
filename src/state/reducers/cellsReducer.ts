@@ -2,7 +2,7 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { Cell } from '../cell';
 import {
   DeleteCellPayload,
-  InsertCellBeforePayload,
+  InsertCellAfterPayload,
   MoveCellPayload,
   UpdateCellPayload,
 } from '../actions';
@@ -47,22 +47,23 @@ const cellsSlice = createSlice({
       state.order[index] = state.order[targetIndex];
       state.order[targetIndex] = action.payload.id;
     },
-    insertCellBefore(
+    insertCellAfter(
       state: CellsState,
-      action: PayloadAction<InsertCellBeforePayload>
+      action: PayloadAction<InsertCellAfterPayload>
     ) {
       const cell: Cell = {
         id: randomId(),
         content: '',
         type: action.payload.type,
       };
+
       state.data[cell.id] = cell;
       const index = state.order.findIndex((id) => id === action.payload.id);
 
       if (index < 0) {
-        state.order.push(cell.id);
+        state.order.unshift(cell.id);
       } else {
-        state.order.splice(index, 0, cell.id);
+        state.order.splice(index + 1, 0, cell.id);
       }
     },
   },
