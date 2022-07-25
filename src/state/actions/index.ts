@@ -19,3 +19,15 @@ export interface UpdateCellPayload {
   id: string;
   content: string;
 }
+
+export interface BundleStartPayload {
+  cellId: string;
+}
+
+export interface BundleCompletePayload {
+  cellId: string;
+  bundle: {
+    code: string;
+    error: string;
+  };
+}
