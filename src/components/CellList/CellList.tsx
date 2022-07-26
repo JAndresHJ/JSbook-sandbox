@@ -1,5 +1,6 @@
 import { useAppSelector } from '../../hooks/useAppSelector';
 import { Fragment } from 'react';
+import './cell-list.css';
 
 // Components
 import AddCell from '../AddCell';
@@ -18,7 +19,7 @@ const CellList: React.FC = () => {
   ));
 
   return (
-    <div>
+    <div className='cell-list'>
       <AddCell forceVisible={cells.length === 0} previousCellId={null} />
       {renderCells}
     </div>
